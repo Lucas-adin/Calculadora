@@ -1,0 +1,123 @@
+calculadora-ee
+│
+├── app.py
+│
+├── templates
+│   └── index.html
+│
+├── static
+│   └── style.css
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Risco Ético</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background:#f4f4f4;
+            padding:40px;
+        }
+
+        .container{
+            background:white;
+            max-width:600px;
+            margin:auto;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        select, button{
+            width:100%;
+            padding:10px;
+            margin-top:10px;
+            margin-bottom:20px;
+        }
+
+        button{
+            background:#2563eb;
+            color:white;
+            border:none;
+            border-radius:5px;
+        }
+
+        .resultado{
+            background:#eef2ff;
+            padding:20px;
+            border-radius:10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Calculadora de Risco Ético</h1>
+
+<form action="/calcular" method="POST">
+
+<label>Uso de dados sensíveis:</label>
+<select name="dados">
+    <option value="0">Não</option>
+    <option value="2">Parcial</option>
+    <option value="5">Sim</option>
+</select>
+
+<label>Transparência da IA:</label>
+<select name="transparencia">
+    <option value="0">Sim</option>
+    <option value="2">Parcial</option>
+    <option value="5">Não</option>
+</select>
+
+<label>Teste contra vieses:</label>
+<select name="vies">
+    <option value="0">Sim</option>
+    <option value="2">Parcial</option>
+    <option value="5">Não</option>
+</select>
+
+<label>Segurança dos dados:</label>
+<select name="seguranca">
+    <option value="0">Sim</option>
+    <option value="2">Parcial</option>
+    <option value="5">Não</option>
+</select>
+
+<label>Supervisão humana:</label>
+<select name="supervisao">
+    <option value="0">Sim</option>
+    <option value="2">Parcial</option>
+    <option value="5">Não</option>
+</select>
+
+<button type="submit">Calcular Risco</button>
+
+</form>
+
+{% if resultado is defined %}
+
+<div class="resultado">
+
+<h2>Resultado</h2>
+
+<p>Score: {{resultado}}</p>
+<p>Nível: {{nivel}}</p>
+<p>{{recomendacao}}</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
